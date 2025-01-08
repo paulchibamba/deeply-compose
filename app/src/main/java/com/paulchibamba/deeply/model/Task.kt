@@ -1,4 +1,4 @@
-package com.paulchibamba.tantika.model
+package com.paulchibamba.deeply.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

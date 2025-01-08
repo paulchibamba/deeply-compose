@@ -1,4 +1,4 @@
-package com.paulchibamba.tantika.ui.theme
+package com.paulchibamba.deeply.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
