@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Tantika"
+rootProject.name = "Deeply"
 include(":app")
  

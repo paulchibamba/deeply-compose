@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.paulchibamba.tantika"
+    namespace = "com.paulchibamba.deeply"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.paulchibamba.tantika"
+        applicationId = "com.paulchibamba.deeply"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.paulchibamba.tantika
+package com.paulchibamba.deeply
 
 import org.junit.Test
 
