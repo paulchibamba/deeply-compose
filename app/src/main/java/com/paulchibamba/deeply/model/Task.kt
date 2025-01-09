@@ -10,7 +10,7 @@ import kotlin.time.Duration
 @Entity(tableName = "task_table")
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
     val title: String,
     val description: String,
     val priority: Priority,
