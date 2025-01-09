@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 import kotlin.time.Duration
 
-@Entity(tableName = "sessions")
+@Entity(tableName = "session")
 data class DeepWorkSession(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val startTime: LocalDateTime,

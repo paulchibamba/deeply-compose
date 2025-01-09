@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import kotlin.time.Duration
 
-@Entity(tableName = "task_table")
+@Entity(tableName = "task")
 data class Task(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
