@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 @Entity(tableName = "daily_journal")
 data class DailyJournal(
     @PrimaryKey val date: LocalDate,
-    val reflections: String,
+    val notes: String,
     val distractions: List<String>,
     val improvements: String,
     val deepWorkHours: Float,

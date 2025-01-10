@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import java.time.DayOfWeek
 import java.time.LocalTime
 
-@Entity(tableName = "user_settings")
-data class UserSettings(
+@Entity(tableName = "user")
+data class User(
     @PrimaryKey val id: Int = 1,
+    val name: String,
     val deepWorkStyle: DeepWorkStyle,
     val dayStartTime: LocalTime,
     val dayEndTime: LocalTime,

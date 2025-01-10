@@ -6,7 +6,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
-@Entity(tableName = "habit_table")
+@Entity(tableName = "habit")
 data class Habit(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
