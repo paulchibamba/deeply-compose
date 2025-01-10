@@ -10,33 +10,33 @@ import javax.inject.Inject
 
 class DailyJournalRepository @Inject constructor(private val dailyJournalDao: DailyJournalDAO) {
 
-    val getAllEntries: Flow<List<DailyJournal>> = dailyJournalDao.getEntries()
+    val allEntries: Flow<List<DailyJournal>> = dailyJournalDao.getEntries()
 
-    fun getEntryDate(date: LocalDate): Flow<DailyJournal> {
+    fun get(date: LocalDate): Flow<DailyJournal> {
         return dailyJournalDao.getEntry(date)
     }
 
-    fun getEntriesByMood(mood: Mood): Flow<List<DailyJournal>> {
+    fun getByMood(mood: Mood): Flow<List<DailyJournal>> {
         return dailyJournalDao.getEntriesByMood(mood)
     }
 
-    fun getEntriesByEnergyLevel(energyLevel: EnergyLevel): Flow<List<DailyJournal>> {
+    fun getByEnergyLevel(energyLevel: EnergyLevel): Flow<List<DailyJournal>> {
         return dailyJournalDao.getEntriesByEnergyLevel(energyLevel)
     }
 
-    suspend fun addEntry(dailyJournal: DailyJournal) {
+    suspend fun add(dailyJournal: DailyJournal) {
         dailyJournalDao.addEntry(dailyJournal)
     }
 
-    suspend fun updateDailyJournal(dailyJournal: DailyJournal) {
+    suspend fun update(dailyJournal: DailyJournal) {
         dailyJournalDao.updateEntry(dailyJournal)
     }
 
-    suspend fun deleteDailyJournal(dailyJournal: DailyJournal) {
+    suspend fun delete(dailyJournal: DailyJournal) {
         dailyJournalDao.deleteEntry(dailyJournal)
     }
 
-    suspend fun deleteAllEntries() {
+    suspend fun deleteAll() {
         dailyJournalDao.deleteAllEntries()
     }
 

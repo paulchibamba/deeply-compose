@@ -14,27 +14,27 @@ class WeeklyReviewRepository @Inject constructor(private val weeklyReviewDAO: We
         return weeklyReviewDAO.getWeeklyReview(weekStartDate)
     }
 
-    fun getWeeklyReviewsInRange(startDate: LocalDate, endDate: LocalDate): Flow<List<WeeklyReview>> {
+    fun getInRange(startDate: LocalDate, endDate: LocalDate): Flow<List<WeeklyReview>> {
         return weeklyReviewDAO.getWeeklyReviewsInRange(startDate, endDate)
     }
 
-    fun getPreviousWeeklyReview(): Flow<WeeklyReview?>{
+    fun getPreviousWeek(): Flow<WeeklyReview?>{
         return weeklyReviewDAO.getPreviousWeeklyReview()
     }
 
-    suspend fun addWeeklyReview(weeklyReview: WeeklyReview) {
+    suspend fun add(weeklyReview: WeeklyReview) {
         weeklyReviewDAO.addWeeklyReview(weeklyReview)
     }
 
-    suspend fun updateWeeklyReview(weeklyReview: WeeklyReview) {
+    suspend fun update(weeklyReview: WeeklyReview) {
         weeklyReviewDAO.updateWeeklyReview(weeklyReview)
     }
 
-    suspend fun deleteWeeklyReview(weeklyReview: WeeklyReview) {
+    suspend fun delete(weeklyReview: WeeklyReview) {
         weeklyReviewDAO.deleteWeeklyReview(weeklyReview)
     }
 
-    suspend fun deleteAllWeeklyReviews() {
+    suspend fun deleteAll() {
         weeklyReviewDAO.deleteAllWeeklyReviews()
     }
 

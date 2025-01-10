@@ -14,23 +14,23 @@ class ProjectRepository @Inject constructor(private val projectDAO: ProjectDAO) 
         return projectDAO.getProject(id)
     }
 
-    fun getProjectByStatus(status: ProjectStatus): Flow<List<Project>> {
+    fun getByStatus(status: ProjectStatus): Flow<List<Project>> {
         return projectDAO.getProjectsByStatus(status)
     }
 
-    suspend fun addProject(project: Project) {
+    suspend fun add(project: Project) {
         projectDAO.addProject(project)
     }
 
-    suspend fun updateProject(project: Project) {
+    suspend fun update(project: Project) {
         projectDAO.updateProject(project)
     }
 
-    suspend fun deleteProject(project: Project) {
+    suspend fun delete(project: Project) {
         projectDAO.deleteProject(project)
     }
 
-    suspend fun deleteAllProjects() {
+    suspend fun deleteAll() {
         projectDAO.deleteAll()
     }
 

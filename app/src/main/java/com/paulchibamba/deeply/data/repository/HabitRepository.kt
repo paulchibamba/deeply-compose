@@ -11,23 +11,23 @@ class HabitRepository @Inject constructor(private val habitDAO: HabitDAO){
     fun getHabit(id: Long): Flow<Habit> {
         return habitDAO.getHabit(id)
     }
-    suspend fun addHabit(habit: Habit){
+    suspend fun add(habit: Habit){
         habitDAO.addHabit(habit)
     }
 
-    suspend fun updateHabit(habit: Habit){
+    suspend fun update(habit: Habit){
         habitDAO.updateHabit(habit)
     }
 
-    suspend fun deleteHabit(habit: Habit){
+    suspend fun delete(habit: Habit){
         habitDAO.deleteHabit(habit)
     }
 
-    suspend fun deleteAllHabits(){
+    suspend fun deleteAll(){
         habitDAO.deleteAllHabits()
     }
 
-    fun searchHabits(query: String): Flow<List<Habit>> {
+    fun search(query: String): Flow<List<Habit>> {
         return habitDAO.searchHabits(query)
     }
 }

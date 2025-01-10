@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class TaskRepository @Inject constructor(private val taskDao: TaskDAO) {
 
-    val getAllTasks: Flow<List<Task>> = taskDao.getAllTasks()
+    val allTasks: Flow<List<Task>> = taskDao.getAllTasks()
     val sortByHighPriority: Flow<List<Task>> = taskDao.sortByHighPriority()
     val sortByLowPriority: Flow<List<Task>> = taskDao.sortByLowPriority()
 
@@ -17,23 +17,23 @@ class TaskRepository @Inject constructor(private val taskDao: TaskDAO) {
         return taskDao.getTaskById(taskId)
     }
 
-    suspend fun addTask(task: Task) {
+    suspend fun add(task: Task) {
         taskDao.addTask(task)
     }
 
-    suspend fun updateTask(task: Task) {
+    suspend fun update(task: Task) {
         taskDao.updateTask(task)
     }
 
-    suspend fun deleteTask(task: Task) {
+    suspend fun delete(task: Task) {
         taskDao.deleteTask(task)
     }
 
-    suspend fun deleteAllTasks() {
+    suspend fun deleteAll() {
         taskDao.deleteAllTasks()
     }
 
-    fun searchTasks(query: String): Flow<List<Task>> {
+    fun search(query: String): Flow<List<Task>> {
         return taskDao.searchTasks(query)
     }
 }

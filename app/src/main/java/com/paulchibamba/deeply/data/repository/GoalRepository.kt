@@ -7,17 +7,17 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GoalRepository @Inject constructor(private val goalDao: GoalDAO) {
-    val goals: Flow<List<Goal>> = goalDao.getAll()
+    val allGoals: Flow<List<Goal>> = goalDao.getAll()
     val goalCount: Flow<Int> = goalDao.getGoalCount()
 
     fun getGoal(id: Long): Flow<Goal> {
         return goalDao.getGoal(id)
     }
 
-    fun getGoalsByTypeId(goalType: GoalType): Flow<List<Goal>> {
+    fun getByTypeId(goalType: GoalType): Flow<List<Goal>> {
         return goalDao.getGoalsByType(goalType)
     }
-    suspend fun insert(goal: Goal) {
+    suspend fun add(goal: Goal) {
         goalDao.addGoal(goal)
     }
 
@@ -29,11 +29,11 @@ class GoalRepository @Inject constructor(private val goalDao: GoalDAO) {
         goalDao.deleteGoal(goal)
     }
 
-    suspend fun deleteAllGoals() {
+    suspend fun deleteAll() {
         goalDao.deleteAllGoals()
     }
 
-    fun searchGoals(query: String): Flow<List<Goal>> {
+    fun search(query: String): Flow<List<Goal>> {
         return goalDao.searchGoals(query)
     }
 

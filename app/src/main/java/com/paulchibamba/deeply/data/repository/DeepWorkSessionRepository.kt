@@ -7,32 +7,32 @@ import java.time.LocalDateTime
 import javax.inject.Inject
 
 class DeepWorkSessionRepository @Inject constructor(private val deepWorkSessionDAO: DeepWorkSessionDAO) {
-    val sessions: Flow<List<DeepWorkSession>> = deepWorkSessionDAO.getSessions()
-    suspend fun addSession(session: DeepWorkSession) {
+    val allSessions: Flow<List<DeepWorkSession>> = deepWorkSessionDAO.getSessions()
+    suspend fun add(session: DeepWorkSession) {
         deepWorkSessionDAO.addSession(session)
     }
 
-    fun getSession(id: Long): Flow<DeepWorkSession> {
+    fun get(id: Long): Flow<DeepWorkSession> {
         return deepWorkSessionDAO.getSession(id)
     }
 
-    fun getSessionsForToday(currentDate: LocalDateTime): Flow<List<DeepWorkSession>> {
+    fun getForToday(currentDate: LocalDateTime): Flow<List<DeepWorkSession>> {
         return deepWorkSessionDAO.getSessionsForToday(currentDate)
     }
 
-    fun getSessionsByDateRange(startDate: LocalDateTime, endDate: LocalDateTime): Flow<List<DeepWorkSession>> {
+    fun getByDateRange(startDate: LocalDateTime, endDate: LocalDateTime): Flow<List<DeepWorkSession>> {
         return deepWorkSessionDAO.getSessionsByDateRange(startDate, endDate)
     }
 
-    suspend fun updateSession(session: DeepWorkSession) {
+    suspend fun update(session: DeepWorkSession) {
         deepWorkSessionDAO.updateSession(session)
     }
 
-    suspend fun deleteSession(session: DeepWorkSession) {
+    suspend fun delete(session: DeepWorkSession) {
         deepWorkSessionDAO.deleteSession(session)
     }
 
-    suspend fun deleteAllSessions() {
+    suspend fun deleteAll() {
         deepWorkSessionDAO.deleteAllSessions()
     }
 

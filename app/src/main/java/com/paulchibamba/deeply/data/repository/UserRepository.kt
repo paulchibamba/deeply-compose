@@ -10,15 +10,15 @@ class UserRepository @Inject constructor(private val userDAO: UserDAO) {
         return userDAO.getUser()
     }
 
-    suspend fun addUser(user: User) {
+    suspend fun add(user: User) {
         userDAO.addUser(user)
     }
 
-    suspend fun updateUser(user: User) {
+    suspend fun update(user: User) {
         userDAO.updateUser(user)
     }
 
-    suspend fun deleteUsers() {
+    suspend fun delete() {
         userDAO.deleteAllUsers()
     }
 }
