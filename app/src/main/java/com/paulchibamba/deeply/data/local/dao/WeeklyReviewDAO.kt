@@ -25,7 +25,7 @@ interface WeeklyReviewDAO {
     fun getPreviousWeeklyReview(): Flow<WeeklyReview?>
 
     @Insert
-    suspend fun insertWeeklyReview(weeklyReview: WeeklyReview)
+    suspend fun addWeeklyReview(weeklyReview: WeeklyReview)
 
     @Update
     suspend fun updateWeeklyReview(weeklyReview: WeeklyReview)
