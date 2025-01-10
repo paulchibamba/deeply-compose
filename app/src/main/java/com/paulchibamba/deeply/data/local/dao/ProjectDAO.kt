@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.paulchibamba.deeply.model.Project
+import com.paulchibamba.deeply.model.ProjectStatus
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -15,7 +16,7 @@ interface ProjectDAO {
     fun getAll(): Flow<List<Project>>
 
     @Query("SELECT * FROM project WHERE id = :id")
-    fun getProject(id: Int): Flow<Project>
+    fun getProject(id: Long): Flow<Project>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addProject(project: Project)
@@ -30,5 +31,5 @@ interface ProjectDAO {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM project WHERE status = :status")
-    fun getProjectsByStatus(status: String): Flow<List<Project>>
+    fun getProjectsByStatus(status: ProjectStatus): Flow<List<Project>>
 }
