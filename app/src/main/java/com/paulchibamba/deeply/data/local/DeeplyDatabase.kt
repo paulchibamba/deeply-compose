@@ -9,6 +9,7 @@ import com.paulchibamba.deeply.data.local.dao.HabitDAO
 import com.paulchibamba.deeply.data.local.dao.ProjectDAO
 import com.paulchibamba.deeply.data.local.dao.TaskDAO
 import com.paulchibamba.deeply.data.local.dao.UserDAO
+import com.paulchibamba.deeply.data.local.dao.WeeklyReviewDAO
 import com.paulchibamba.deeply.model.DailyJournal
 import com.paulchibamba.deeply.model.DeepWorkSession
 import com.paulchibamba.deeply.model.Goal
@@ -27,4 +28,5 @@ abstract class DeeplyDatabase: RoomDatabase() {
     abstract fun projectDao(): ProjectDAO
     abstract fun taskDao(): TaskDAO
     abstract fun userDao(): UserDAO
+    abstract fun weeklyReviewDao(): WeeklyReviewDAO
 }
