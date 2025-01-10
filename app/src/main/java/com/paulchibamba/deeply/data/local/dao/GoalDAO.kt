@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.paulchibamba.deeply.model.Goal
+import com.paulchibamba.deeply.model.GoalType
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -22,7 +23,7 @@ interface GoalDAO {
     fun getGoal(id: Long): Flow<Goal>
 
     @Query("SELECT * FROM Goal WHERE type = :type")
-    fun getGoalByType(type: String): Flow<List<Goal>>
+    fun getGoalsByType(type: GoalType): Flow<List<Goal>>
 
     @Query("SELECT COUNT(*) FROM Goal")
     fun getGoalCount(): Flow<Int>
