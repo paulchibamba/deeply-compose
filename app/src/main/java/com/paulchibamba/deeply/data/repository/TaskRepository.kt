@@ -3,10 +3,11 @@ package com.paulchibamba.deeply.data.repository
 import com.paulchibamba.deeply.data.local.dao.TaskDAO
 import com.paulchibamba.deeply.data.local.dao.UserDAO
 import com.paulchibamba.deeply.model.Task
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-
+@ViewModelScoped
 class TaskRepository @Inject constructor(private val taskDao: TaskDAO) {
 
     val allTasks: Flow<List<Task>> = taskDao.getAllTasks()
