@@ -10,11 +10,11 @@ class WeeklyReviewRepository @Inject constructor(private val weeklyReviewDAO: We
 
     val allWeeklyReviews: Flow<List<WeeklyReview>> = weeklyReviewDAO.getAllWeeklyReviews()
 
-    fun getWeeklyReview(weekStartDate: LocalDate): Flow<WeeklyReview> {
+    fun getWeeklyReview(weekStartDate: Long): Flow<WeeklyReview> {
         return weeklyReviewDAO.getWeeklyReview(weekStartDate)
     }
 
-    fun getInRange(startDate: LocalDate, endDate: LocalDate): Flow<List<WeeklyReview>> {
+    fun getInRange(startDate: Long, endDate: Long): Flow<List<WeeklyReview>> {
         return weeklyReviewDAO.getWeeklyReviewsInRange(startDate, endDate)
     }
 

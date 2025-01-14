@@ -12,7 +12,7 @@ class DailyJournalRepository @Inject constructor(private val dailyJournalDao: Da
 
     val allEntries: Flow<List<DailyJournal>> = dailyJournalDao.getEntries()
 
-    fun get(date: LocalDate): Flow<DailyJournal> {
+    fun get(date: Long): Flow<DailyJournal> {
         return dailyJournalDao.getEntry(date)
     }
 
@@ -20,7 +20,7 @@ class DailyJournalRepository @Inject constructor(private val dailyJournalDao: Da
         return dailyJournalDao.getEntriesByMood(mood)
     }
 
-    fun getByEnergyLevel(energyLevel: EnergyLevel): Flow<List<DailyJournal>> {
+    fun getByEnergyLevel(energyLevel: Int): Flow<List<DailyJournal>> {
         return dailyJournalDao.getEntriesByEnergyLevel(energyLevel)
     }
 

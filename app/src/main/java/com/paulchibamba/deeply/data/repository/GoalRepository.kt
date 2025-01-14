@@ -14,7 +14,7 @@ class GoalRepository @Inject constructor(private val goalDao: GoalDAO) {
         return goalDao.getGoal(id)
     }
 
-    fun getByTypeId(goalType: GoalType): Flow<List<Goal>> {
+    fun getByTypeId(goalType: Int): Flow<List<Goal>> {
         return goalDao.getGoalsByType(goalType)
     }
     suspend fun add(goal: Goal) {

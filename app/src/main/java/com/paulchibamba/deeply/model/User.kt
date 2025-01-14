@@ -7,16 +7,16 @@ import java.time.LocalTime
 
 @Entity(tableName = "user")
 data class User(
-    @PrimaryKey val id: Int = 1,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
-    val deepWorkStyle: DeepWorkStyle,
-    val dayStartTime: LocalTime,
-    val dayEndTime: LocalTime,
-    val deepWorkStartTime: LocalTime,
-    val deepWorkEndTime: LocalTime,
-    val breakDuration: Int,
-    val weekStartDay: DayOfWeek = DayOfWeek.MONDAY,
-    val currentStreak: Int,
-    val longestStreak: Int,
-    val lastDeepWorkSession: LocalTime? = null
+    val deepWorkStyle: Int, // 0: MONASTIC, 1: BIMODAL, 2: RHYTHMIC, 3: JOURNALISTIC
+    val dayStartMillis: Long,
+    val dayEndMillis: Long,
+    val deepWorkStartMillis: Long,
+    val deepWorkEndMillis: Long,
+    val breakDurationMillis: Long,
+    val weekStartDay: Int, // 1-7 for Monday-Sunday
+    val currentStreak: Int = 0,
+    val longestStreak: Int = 0,
+    val lastDeepWorkMillis: Long?
 )

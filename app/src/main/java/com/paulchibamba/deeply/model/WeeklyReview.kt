@@ -6,13 +6,13 @@ import java.time.LocalDate
 
 @Entity(tableName = "weekly_review")
 data class WeeklyReview(
-    @PrimaryKey val weekStartDate: LocalDate,
-    val weekEndDate: LocalDate,
-    val accomplishments: List<String>,
-    val challenges: List<String>,
-    val nextWeekGoals: List<String>,
+    @PrimaryKey val weekStartMillis: Long,
+    val weekEndMillis: Long,
+    val accomplishments: String?, //comma-separated "accomplishment1,accomplishment2"
+    val challenges: String?,      //comma-separated "challenge1,challenge2"
+    val nextWeekGoals: String?,  //comma-separated "goal1,goal2"
     val totalDeepWorkHours: Float,
     val totalShallowWorkHours: Float,
-    val completedTaskCount: Int,
-    val missedTaskCount: Int
+    val completedTasksCount: Int,
+    val missedTasksCount: Int
 )

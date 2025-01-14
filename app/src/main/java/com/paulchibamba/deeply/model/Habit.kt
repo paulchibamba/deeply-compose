@@ -8,13 +8,12 @@ import java.time.LocalTime
 
 @Entity(tableName = "habit")
 data class Habit(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
-    val description: String,
-    val frequency: HabitFrequency,
-    val timeOfDay: LocalTime?,
+    val description: String?,
+    val frequency: Int, // 0: DAILY, 1: WEEKLY, 2: SPECIFIC_DAYS
+    val timeOfDayMillis: Long?,
     val streak: Int = 0,
-    val lastCompletedDate: LocalDate? = null,
-    val associatedGoalId: Long? = null,
+    val lastCompletedMillis: Long?,
+    val associatedGoalId: Long?
 )

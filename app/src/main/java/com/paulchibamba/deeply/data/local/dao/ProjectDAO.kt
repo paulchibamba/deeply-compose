@@ -31,5 +31,5 @@ interface ProjectDAO {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM project WHERE status = :status")
-    fun getProjectsByStatus(status: ProjectStatus): Flow<List<Project>>
+    fun getProjectsByStatus(status: Int): Flow<List<Project>>
 }
