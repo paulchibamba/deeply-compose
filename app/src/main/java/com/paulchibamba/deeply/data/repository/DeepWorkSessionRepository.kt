@@ -16,11 +16,11 @@ class DeepWorkSessionRepository @Inject constructor(private val deepWorkSessionD
         return deepWorkSessionDAO.getSession(id)
     }
 
-    fun getForToday(currentDate: LocalDateTime): Flow<List<DeepWorkSession>> {
+    fun getForToday(currentDate: Long): Flow<List<DeepWorkSession>> {
         return deepWorkSessionDAO.getSessionsForToday(currentDate)
     }
 
-    fun getByDateRange(startDate: LocalDateTime, endDate: LocalDateTime): Flow<List<DeepWorkSession>> {
+    fun getByDateRange(startDate: Long, endDate: Long): Flow<List<DeepWorkSession>> {
         return deepWorkSessionDAO.getSessionsByDateRange(startDate, endDate)
     }
 

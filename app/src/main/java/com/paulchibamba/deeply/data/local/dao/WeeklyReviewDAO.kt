@@ -12,16 +12,16 @@ import java.time.LocalDate
 @Dao
 interface WeeklyReviewDAO {
 
-    @Query("SELECT * FROM weekly_review WHERE weekStartDate = :weekStartDate")
-    fun getWeeklyReview(weekStartDate: LocalDate): Flow<WeeklyReview>
+    @Query("SELECT * FROM weekly_review WHERE weekStartMillis = :weekStartDate")
+    fun getWeeklyReview(weekStartDate: Long): Flow<WeeklyReview>
 
-    @Query("SELECT * FROM weekly_review WHERE weekStartDate BETWEEN :startDate AND :endDate")
-    fun getWeeklyReviewsInRange(startDate: LocalDate, endDate: LocalDate): Flow<List<WeeklyReview>>
+    @Query("SELECT * FROM weekly_review WHERE weekStartMillis BETWEEN :startDate AND :endDate")
+    fun getWeeklyReviewsInRange(startDate: Long, endDate: Long): Flow<List<WeeklyReview>>
 
-    @Query("SELECT * FROM weekly_review ORDER BY weekStartDate DESC")
+    @Query("SELECT * FROM weekly_review ORDER BY weekStartMillis DESC")
     fun getAllWeeklyReviews(): Flow<List<WeeklyReview>>
 
-    @Query("SELECT * FROM weekly_review WHERE weekStartDate < (SELECT MAX(weekStartDate) FROM weekly_review) ORDER BY weekStartDate DESC LIMIT 1")
+    @Query("SELECT * FROM weekly_review WHERE weekStartMillis < (SELECT MAX(weekStartMillis) FROM weekly_review) ORDER BY weekStartMillis DESC LIMIT 1")
     fun getPreviousWeeklyReview(): Flow<WeeklyReview?>
 
     @Insert

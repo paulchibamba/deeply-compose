@@ -21,14 +21,14 @@ interface DailyJournalDAO {
     @Query("SELECT * FROM daily_journal")
     fun getEntries(): Flow<List<DailyJournal>>
 
-    @Query("SELECT * FROM daily_journal WHERE date = :date")
-    fun getEntry(date: LocalDate): Flow<DailyJournal>
+    @Query("SELECT * FROM daily_journal WHERE dateMillis = :date")
+    fun getEntry(date: Long): Flow<DailyJournal>
 
     @Query("SELECT * FROM daily_journal WHERE mood = :mood")
     fun getEntriesByMood(mood: Mood): Flow<List<DailyJournal>>
 
     @Query("SELECT * FROM daily_journal WHERE energyLevel = :energyLevel")
-    fun getEntriesByEnergyLevel(energyLevel: EnergyLevel): Flow<List<DailyJournal>>
+    fun getEntriesByEnergyLevel(energyLevel: Int): Flow<List<DailyJournal>>
 
     @Update
     suspend fun updateEntry(entry: DailyJournal)

@@ -8,11 +8,11 @@ import kotlin.time.Duration
 @Entity(tableName = "session")
 data class DeepWorkSession(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val startTime: LocalDateTime,
-    val endTime: LocalDateTime,
-    val plannedDuration: Duration,
-    val actualDuration: Duration? = null,
+    val startTimeMillis: Long,
+    val endTimeMillis: Long?,
+    val plannedDurationMillis: Long,
+    val actualDurationMillis: Long?,
     val taskId: Long?,
-    val interruptions: Interruption,
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val completed: Boolean = false,
+    val interruptions: String? // "timestamp,reason;timestamp,reason..."
 )

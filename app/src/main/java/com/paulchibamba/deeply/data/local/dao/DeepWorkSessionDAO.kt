@@ -23,11 +23,11 @@ interface DeepWorkSessionDAO {
     @Query("SELECT * FROM session WHERE id = :id")
     fun getSession(id: Long): Flow<DeepWorkSession>
 
-    @Query("SELECT * FROM session WHERE DATE(startTime) = DATE(:currentDate)")
-    fun getSessionsForToday(currentDate: LocalDateTime): Flow<List<DeepWorkSession>>
+    @Query("SELECT * FROM session WHERE DATE(startTimeMillis) = DATE(:currentDate)")
+    fun getSessionsForToday(currentDate: Long): Flow<List<DeepWorkSession>>
 
-    @Query("SELECT * FROM session WHERE DATE(startTime) BETWEEN DATE(:startDate) AND DATE(:endDate)")
-    fun getSessionsByDateRange(startDate: LocalDateTime, endDate: LocalDateTime): Flow<List<DeepWorkSession>>
+    @Query("SELECT * FROM session WHERE DATE(startTimeMillis) BETWEEN DATE(:startDate) AND DATE(:endDate)")
+    fun getSessionsByDateRange(startDate: Long, endDate: Long): Flow<List<DeepWorkSession>>
 
     @Update
     suspend fun updateSession(deepWorkSession: DeepWorkSession)

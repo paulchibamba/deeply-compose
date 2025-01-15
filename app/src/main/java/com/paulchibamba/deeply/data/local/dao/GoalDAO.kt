@@ -23,7 +23,7 @@ interface GoalDAO {
     fun getGoal(id: Long): Flow<Goal>
 
     @Query("SELECT * FROM Goal WHERE type = :type")
-    fun getGoalsByType(type: GoalType): Flow<List<Goal>>
+    fun getGoalsByType(type: Int): Flow<List<Goal>>
 
     @Query("SELECT COUNT(*) FROM Goal")
     fun getGoalCount(): Flow<Int>

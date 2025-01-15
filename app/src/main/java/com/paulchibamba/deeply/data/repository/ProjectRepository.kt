@@ -14,7 +14,7 @@ class ProjectRepository @Inject constructor(private val projectDAO: ProjectDAO) 
         return projectDAO.getProject(id)
     }
 
-    fun getByStatus(status: ProjectStatus): Flow<List<Project>> {
+    fun getByStatus(status: Int): Flow<List<Project>> {
         return projectDAO.getProjectsByStatus(status)
     }
 
