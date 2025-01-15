@@ -18,6 +18,9 @@ fun TaskListScreen(
     navigateToTaskDetailScreen: (Int) -> Unit
 ){
     Scaffold(
+        topBar = {
+            TaskListAppBar()
+        },
         content = {
             Log.d(TAG, "ListScreen: $it")
         },
