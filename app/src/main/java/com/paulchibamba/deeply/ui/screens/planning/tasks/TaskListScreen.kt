@@ -15,7 +15,7 @@ import com.paulchibamba.deeply.R
 
 @Composable
 fun TaskListScreen(
-    navigateToTaskDetailScreen: (Int) -> Unit
+    navigateToTaskDetailScreen: (taskId: Int) -> Unit
 ){
     Scaffold(
         topBar = {
@@ -33,7 +33,7 @@ fun TaskListScreen(
 }
 
 @Composable
-fun TaskListFab(onFabClicked: (Int) -> Unit) {
+fun TaskListFab(onFabClicked: (taskId: Int) -> Unit) {
     FloatingActionButton(onClick = {
             onFabClicked(-1)
         }) {
