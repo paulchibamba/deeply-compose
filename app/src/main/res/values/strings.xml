@@ -5,4 +5,6 @@
     <string name="sort_icon">Sort Icon</string>
     <string name="more_options_icon">More Options</string>
     <string name="delete_all_tasks">Delete All Tasks</string>
+    <string name="close_icon">Close Icon</string>
+    <string name="search_placeholder">Search..</string>
 </resources>

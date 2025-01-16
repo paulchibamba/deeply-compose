@@ -7,9 +7,10 @@ import androidx.navigation.compose.NavHost
 import com.paulchibamba.deeply.navigation.destinations.tasks.taskDetailComposable
 import com.paulchibamba.deeply.navigation.destinations.tasks.taskListComposable
 import com.paulchibamba.deeply.utils.Constants.TASK_LIST_SCREEN
+import com.paulchibamba.deeply.viewmodel.SharedViewModel
 
 @Composable
-fun SetupNavigation(navController: NavHostController, ){
+fun SetupNavigation(navController: NavHostController, sharedViewModel: SharedViewModel) {
     val screen = remember(navController){
         Screens(navController = navController)
     }
@@ -19,7 +20,8 @@ fun SetupNavigation(navController: NavHostController, ){
         startDestination = TASK_LIST_SCREEN
     ){
         taskListComposable(
-            navigateToTaskDetailScreen = screen.taskDetail
+            navigateToTaskDetailScreen = screen.taskDetail,
+            sharedViewModel = sharedViewModel
         )
         taskDetailComposable(
             navigateToTaskListScreen = screen.taskList
