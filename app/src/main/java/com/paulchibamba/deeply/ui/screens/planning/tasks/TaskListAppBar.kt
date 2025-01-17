@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.DropdownMenu
@@ -100,13 +101,10 @@ fun SearchAppBar(
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit
 ) {
-    var trailingIconState by remember { mutableStateOf(TrailingIconState.READY_TO_CLOSE) }
-
     TopAppBar(
         title = {
             TextField(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
@@ -115,16 +113,12 @@ fun SearchAppBar(
                     unfocusedIndicatorColor = Color.Transparent
                 ),
                 value = text,
-                onValueChange = {
-                    onTextChange(it)
-                    if (it.isNotEmpty()) {
-                        trailingIconState = TrailingIconState.READY_TO_DELETE
-                    }
-                },
+                onValueChange = { onTextChange(it) },
                 placeholder = {
                     Text(
+                        modifier = Modifier.alpha(0.5f),
                         text = stringResource(R.string.search_placeholder),
-                        color = MaterialTheme.colorScheme.inversePrimary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 },
                 textStyle = TextStyle(
@@ -134,41 +128,24 @@ fun SearchAppBar(
                 singleLine = true,
                 leadingIcon = {
                     IconButton(
-                        modifier = Modifier.alpha(0.2f),
-                        onClick = { /* Handle search icon click if needed */ }
+                        onClick = { onCloseClicked() }
                     ) {
                         Icon(
-                            imageVector = Icons.Filled.Search,
+                            imageVector = Icons.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.search_icon),
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer
+                            tint = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 },
                 trailingIcon = {
-                    IconButton(
-                        onClick = {
-                            when (trailingIconState) {
-                                TrailingIconState.READY_TO_DELETE -> {
-                                    onTextChange("")
-                                    trailingIconState = TrailingIconState.READY_TO_CLOSE
-                                }
-
-                                TrailingIconState.READY_TO_CLOSE -> {
-                                    if (text.isNotEmpty()) {
-                                        onTextChange("")
-                                    } else {
-                                        onCloseClicked()
-                                        trailingIconState = TrailingIconState.READY_TO_DELETE
-                                    }
-                                }
-                            }
+                    if (text.isNotEmpty()) {
+                        IconButton(onClick = { onTextChange("") }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_clear_24),
+                                contentDescription = stringResource(R.string.close_icon),
+                                tint = MaterialTheme.colorScheme.onSurface
+                            )
                         }
-                    ) {
-                        Icon(
-                            painter = painterResource(id = if (trailingIconState == TrailingIconState.READY_TO_DELETE) R.drawable.ic_backspace_24 else R.drawable.ic_clear_24),
-                            contentDescription = stringResource(R.string.close_icon),
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
                     }
                 },
                 keyboardOptions = KeyboardOptions(
@@ -180,12 +157,6 @@ fun SearchAppBar(
                     }
                 )
             )
-        },
-        navigationIcon = {
-            // Add a back or menu icon if needed
-        },
-        actions = {
-            // Add additional action buttons here if required
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
