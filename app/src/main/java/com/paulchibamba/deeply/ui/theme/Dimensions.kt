@@ -2,7 +2,8 @@ package com.paulchibamba.deeply.ui.theme
 
 import androidx.compose.ui.unit.dp
 
-val XX_LARGE_PADDING = 32.dp
+val XXX_LARGE_PADDING = 32.dp
+val XX_LARGE_PADDING = 24.dp
 val X_LARGE_PADDING = 16.dp
 val LARGE_PADDING = 12.dp
 val MEDIUM_PADDING = 8.dp

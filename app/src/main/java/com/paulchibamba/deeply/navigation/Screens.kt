@@ -12,7 +12,7 @@ class Screens(navController: NavHostController) {
         }
     }
 
-    val taskDetail: (Int) -> Unit = { taskId ->
+    val taskDetail: (Long) -> Unit = { taskId ->
         navController.navigate("task_detail/$taskId")
     }
 }

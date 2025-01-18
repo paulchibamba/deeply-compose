@@ -6,7 +6,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -37,7 +36,6 @@ import com.paulchibamba.deeply.model.Priority
 import com.paulchibamba.deeply.ui.components.PriorityItem
 import com.paulchibamba.deeply.ui.theme.MEDIUM_PADDING
 import com.paulchibamba.deeply.utils.SearchAppBarState
-import com.paulchibamba.deeply.utils.TrailingIconState
 import com.paulchibamba.deeply.viewmodel.SharedViewModel
 
 @Composable
@@ -78,7 +76,9 @@ fun DefaultTaskListAppBar(
     onDeleteAllCLicked: () -> Unit
 ){
     TopAppBar(
-        title = { Text(text = "Tasks") },
+        title = {
+            Text(text = stringResource(R.string.task_list_screen_title))
+                },
         actions = { TaskListAppBarActions(
             onSearchClicked,
             onSortClicked,
@@ -287,7 +287,7 @@ fun DefaultTaskListAppBarPreview(){
 @Composable
 fun SearchAppBarPreview(){
     SearchAppBar(
-        text = "Search",
+        text = "Search...",
         onTextChange = {},
         onCloseClicked = {},
         onSearchClicked = {}

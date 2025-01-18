@@ -10,7 +10,7 @@ import com.paulchibamba.deeply.utils.Constants.TASK_LIST_SCREEN
 import com.paulchibamba.deeply.viewmodel.SharedViewModel
 
 fun NavGraphBuilder.taskListComposable(
-    navigateToTaskDetailScreen: (taskId: Int) -> Unit,
+    navigateToTaskDetailScreen: (taskId: Long) -> Unit,
     sharedViewModel: SharedViewModel
 ){
     composable(
