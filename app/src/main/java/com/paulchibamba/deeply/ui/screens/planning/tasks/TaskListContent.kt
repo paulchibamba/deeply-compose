@@ -36,14 +36,35 @@ import com.paulchibamba.deeply.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.paulchibamba.deeply.ui.theme.SMALL_PADDING
 import com.paulchibamba.deeply.ui.theme.XX_LARGE_PADDING
 import com.paulchibamba.deeply.ui.theme.X_LARGE_PADDING
+import com.paulchibamba.deeply.utils.RequestState
 import com.paulchibamba.deeply.utils.toDynamicDuration
 
 @Composable
 fun TaskListContent(
-    tasks: List<Task>,
+    tasks: RequestState<List<Task>>,
     navigateToTaskDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    if (tasks is RequestState.Success) {
+        if (tasks.data.isEmpty()) {
+            NoContent()
+        } else {
+            TaskList(
+                tasks = tasks.data,
+                navigateToTaskDetail = navigateToTaskDetail,
+                modifier = modifier
+            )
+        }
+    }
+
+}
+
+@Composable
+fun TaskList(
+    tasks: List<Task>,
+    navigateToTaskDetail: (Long) -> Unit,
+    modifier: Modifier = Modifier
+){
     LazyColumn(
         modifier = modifier
     ) {
@@ -60,6 +81,7 @@ fun TaskListContent(
 
     }
 }
+
 
 @Composable
 fun TaskItem(

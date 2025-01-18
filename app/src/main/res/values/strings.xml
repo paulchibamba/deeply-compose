@@ -8,4 +8,6 @@
     <string name="close_icon">Close Icon</string>
     <string name="search_placeholder">Search...</string>
     <string name="task_list_screen_title">Tasks</string>
+    <string name="add_task_icon">Add Task Icon</string>
+    <string name="no_content">No Content</string>
 </resources>
