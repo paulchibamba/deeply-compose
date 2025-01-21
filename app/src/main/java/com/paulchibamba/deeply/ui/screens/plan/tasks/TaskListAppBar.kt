@@ -1,4 +1,4 @@
-package com.paulchibamba.deeply.ui.screens.planning.tasks
+package com.paulchibamba.deeply.ui.screens.plan.tasks
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
