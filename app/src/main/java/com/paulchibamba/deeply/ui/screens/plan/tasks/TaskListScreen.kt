@@ -1,8 +1,5 @@
-package com.paulchibamba.deeply.ui.screens.planning.tasks
+package com.paulchibamba.deeply.ui.screens.plan.tasks
 
-import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add

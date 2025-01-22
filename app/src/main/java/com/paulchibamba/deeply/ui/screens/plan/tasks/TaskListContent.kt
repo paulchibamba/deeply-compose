@@ -1,13 +1,9 @@
-package com.paulchibamba.deeply.ui.screens.planning.tasks
+package com.paulchibamba.deeply.ui.screens.plan.tasks
 
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,12 +23,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.paulchibamba.deeply.R
 import com.paulchibamba.deeply.model.Task
-import com.paulchibamba.deeply.model.WorkType
 import com.paulchibamba.deeply.model.getCategoryId
 import com.paulchibamba.deeply.model.getPriorityColor
-import com.paulchibamba.deeply.ui.theme.LARGE_PADDING
 import com.paulchibamba.deeply.ui.theme.MEDIUM_PADDING
-import com.paulchibamba.deeply.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.paulchibamba.deeply.ui.theme.SMALL_PADDING
 import com.paulchibamba.deeply.ui.theme.XX_LARGE_PADDING
 import com.paulchibamba.deeply.ui.theme.X_LARGE_PADDING
