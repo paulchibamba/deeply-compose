@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.paulchibamba.deeply.navigation.SetupNavigation
+import com.paulchibamba.deeply.ui.screens.plan.projects.ProjectViewModel
 import com.paulchibamba.deeply.ui.theme.DeeplyTheme
 import com.paulchibamba.deeply.viewmodel.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
     private val sharedViewModel: SharedViewModel by viewModels()
+    private val projectViewModel: ProjectViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DeeplyTheme {
                 navController = rememberNavController()
-                SetupNavigation(navController, sharedViewModel)
+                SetupNavigation(navController, sharedViewModel, projectViewModel)
             }
         }
     }

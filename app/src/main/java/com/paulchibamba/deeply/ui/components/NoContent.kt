@@ -1,4 +1,4 @@
-package com.paulchibamba.deeply.ui.screens.plan.tasks
+package com.paulchibamba.deeply.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -35,7 +35,6 @@ fun NoContent(){
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSecondaryContainer
         )
-
     }
 }
 

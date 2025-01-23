@@ -1,4 +1,4 @@
-package com.paulchibamba.deeply.ui.screens.plan.tasks
+package com.paulchibamba.deeply.ui.screens.plan.projects
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -15,56 +15,55 @@ import androidx.compose.ui.res.stringResource
 import com.paulchibamba.deeply.R
 import com.paulchibamba.deeply.ui.components.ListAppBar
 import com.paulchibamba.deeply.utils.SearchAppBarState
-import com.paulchibamba.deeply.viewmodel.SharedViewModel
-
 
 @Composable
-fun TaskListScreen(
-    navigateToTaskDetailScreen: (taskId: Long) -> Unit,
-    sharedViewModel: SharedViewModel
+fun ProjectListScreen(
+    navigateToProjectDetailScreen: (taskId: Long) -> Unit,
+    projectViewModel: ProjectViewModel
 ){
     LaunchedEffect(key1 = true) {
-        sharedViewModel.getAllTasks()
+        projectViewModel.getAllProjects()
     }
 
-    val allTasks by sharedViewModel.allTasks.collectAsState()
-    val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
-    val searchText: String by sharedViewModel.searchText
+    val allProjects by projectViewModel.allProjects.collectAsState()
+    val searchAppBarState: SearchAppBarState by projectViewModel.searchAppBarState
+    val searchText: String by projectViewModel.searchText
+
+
     Scaffold(
         topBar = {
             ListAppBar(
-                title = stringResource(id = R.string.task_list_screen_title),
+                title = stringResource(R.string.projects),
                 searchAppBarState = searchAppBarState,
                 searchText = searchText,
-                onSearchStateChange = { sharedViewModel.updateSearchState(it) },
-                onSearchTextChange = { sharedViewModel.updateSearchText(it) },
+                onSearchStateChange = { projectViewModel.updateSearchState(it) },
+                onSearchTextChange = { projectViewModel.updateSearchText(it) },
                 onDeleteAllClicked = {  }
             )
         },
-        content = {paddingValues ->
-            TaskListContent(
-                tasks = allTasks,
-                navigateToTaskDetail = navigateToTaskDetailScreen,
+        content = { paddingValues ->
+            ProjectListContent(
+                projects = allProjects,
+                navigateToProjectDetailScreen = navigateToProjectDetailScreen,
                 modifier = Modifier.padding(paddingValues)
             )
-
         },
         floatingActionButton = {
-            TaskListFab(
-                onFabClicked = navigateToTaskDetailScreen
-            )
+            ProjectListFab(onFabClicked = navigateToProjectDetailScreen)
         }
     )
 }
 
 @Composable
-fun TaskListFab(onFabClicked: (taskId: Long) -> Unit) {
+fun ProjectListFab(onFabClicked: (taskId: Long) -> Unit) {
     FloatingActionButton(onClick = {
-            onFabClicked(-1)
-        }) {
+        onFabClicked(-1)
+    }) {
         Icon(
             imageVector = Icons.Filled.Add,
-            contentDescription = stringResource(R.string.add_task)
+            contentDescription = stringResource(R.string.add_project)
         )
     }
 }
+
+
