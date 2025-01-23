@@ -25,6 +25,7 @@ import com.paulchibamba.deeply.R
 import com.paulchibamba.deeply.model.Task
 import com.paulchibamba.deeply.model.getCategoryId
 import com.paulchibamba.deeply.model.getPriorityColor
+import com.paulchibamba.deeply.ui.components.NoContent
 import com.paulchibamba.deeply.ui.theme.MEDIUM_PADDING
 import com.paulchibamba.deeply.ui.theme.SMALL_PADDING
 import com.paulchibamba.deeply.ui.theme.XX_LARGE_PADDING

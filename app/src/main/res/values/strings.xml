@@ -10,4 +10,6 @@
     <string name="task_list_screen_title">Tasks</string>
     <string name="add_task_icon">Add Task Icon</string>
     <string name="no_content">No Content</string>
+    <string name="projects">Projects</string>
+    <string name="add_project">Add Project</string>
 </resources>

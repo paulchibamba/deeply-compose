@@ -1,12 +1,11 @@
-package com.paulchibamba.deeply.viewmodel
+package com.paulchibamba.deeply.ui.screens.plan.projects
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.paulchibamba.deeply.data.repository.TaskRepository
-import com.paulchibamba.deeply.model.Task
+import com.paulchibamba.deeply.data.repository.ProjectRepository
+import com.paulchibamba.deeply.model.Project
 import com.paulchibamba.deeply.utils.RequestState
 import com.paulchibamba.deeply.utils.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,10 +15,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SharedViewModel @Inject constructor(private val taskRepository: TaskRepository): ViewModel() {
-
-//    val searchAppBarState: MutableState<SearchAppBarState> = mutableStateOf(SearchAppBarState.CLOSED)
-//    val searchText: MutableState<String> = mutableStateOf("")
+class ProjectViewModel @Inject constructor(
+    private val projectRepository: ProjectRepository
+) : ViewModel() {
 
     private val _searchAppBarState = mutableStateOf(SearchAppBarState.CLOSED)
     val searchAppBarState: State<SearchAppBarState> = _searchAppBarState
@@ -27,19 +25,19 @@ class SharedViewModel @Inject constructor(private val taskRepository: TaskReposi
     private val _searchText = mutableStateOf("")
     val searchText: State<String> = _searchText
 
-    private val _allTasks = MutableStateFlow<RequestState<List<Task>>>(RequestState.Idle)
-    val allTasks: StateFlow<RequestState<List<Task>>> = _allTasks
+    private val _allProjects = MutableStateFlow<RequestState<List<Project>>>(RequestState.Idle)
+    val allProjects: StateFlow<RequestState<List<Project>>> = _allProjects
 
-    fun getAllTasks() {
-        _allTasks.value = RequestState.Loading
+    fun getAllProjects() {
+        _allProjects.value = RequestState.Loading
         try {
             viewModelScope.launch {
-                taskRepository.allTasks.collect{
-                    _allTasks.value = RequestState.Success(it)
+                projectRepository.allProjects.collect {
+                    _allProjects.value = RequestState.Success(it)
                 }
             }
         } catch (e: Exception) {
-            _allTasks.value = RequestState.Error(e)
+            _allProjects.value = RequestState.Error(e)
         }
     }
 

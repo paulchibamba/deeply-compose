@@ -1,4 +1,4 @@
-package com.paulchibamba.deeply.ui.screens.plan.tasks
+package com.paulchibamba.deeply.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,53 +33,55 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import com.paulchibamba.deeply.R
 import com.paulchibamba.deeply.model.Priority
-import com.paulchibamba.deeply.ui.components.PriorityItem
 import com.paulchibamba.deeply.ui.theme.MEDIUM_PADDING
 import com.paulchibamba.deeply.utils.SearchAppBarState
-import com.paulchibamba.deeply.viewmodel.SharedViewModel
 
 @Composable
-fun TaskListAppBar(
-    sharedViewModel: SharedViewModel,
+fun ListAppBar(
+    title: String,
     searchAppBarState: SearchAppBarState,
-    searchText: String
+    searchText: String,
+    onSearchStateChange: (SearchAppBarState) -> Unit,
+    onSearchTextChange: (String) -> Unit,
+    onSortClicked: (Priority) -> Unit = {},
+    onDeleteAllClicked: () -> Unit = {}
 ){
-
     when (searchAppBarState) {
         SearchAppBarState.CLOSED -> {
-            DefaultTaskListAppBar(
-                onSearchClicked = { /*sharedViewModel.searchAppBarState.value = SearchAppBarState.OPENED*/ },
-                onSortClicked = {},
-                onDeleteAllCLicked = {}
+            DefaultListAppBar(
+                title = title,
+                onSearchClicked = { onSearchStateChange(SearchAppBarState.OPENED) },
+                onSortClicked = onSortClicked,
+                onDeleteAllCLicked = onDeleteAllClicked
             )
         }
         else -> {
             SearchAppBar(
                 text = searchText,
-                onTextChange = { text -> /*sharedViewModel.searchText.value = text*/ },
+                onTextChange = { onSearchTextChange(it) },
                 onCloseClicked = {
-                    /*sharedViewModel.searchAppBarState.value = SearchAppBarState.CLOSED
-                    sharedViewModel.searchText.value = ""*/
+                    onSearchStateChange(SearchAppBarState.CLOSED)
+                    onSearchTextChange("")
                 },
                 onSearchClicked = {}
             )
         }
     }
-
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DefaultTaskListAppBar(
+fun DefaultListAppBar(
+    title: String,
     onSearchClicked: () -> Unit,
     onSortClicked: (Priority) -> Unit,
     onDeleteAllCLicked: () -> Unit
 ){
     TopAppBar(
         title = {
-            Text(text = stringResource(R.string.task_list_screen_title))
-                },
-        actions = { TaskListAppBarActions(
+            Text(text = title)
+        },
+        actions = { ListAppBarActions(
             onSearchClicked,
             onSortClicked,
             onDeleteAllCLicked
@@ -165,7 +167,7 @@ fun SearchAppBar(
 }
 
 @Composable
-fun TaskListAppBarActions(
+fun ListAppBarActions(
     onSearchClicked: () -> Unit,
     onSortClicked: (Priority) -> Unit,
     onDeleteAllCLicked: () -> Unit
@@ -233,9 +235,9 @@ fun SortAction(
                     onSortClicked(Priority.NONE)
                 }
             )
-            
+
         }
-        
+
     }
 }
 
@@ -275,8 +277,9 @@ fun MoreAction(
 
 @Preview
 @Composable
-fun DefaultTaskListAppBarPreview(){
-    DefaultTaskListAppBar(
+fun DefaultListAppBarPreview(){
+    DefaultListAppBar(
+        title = "Projects",
         onSearchClicked = {},
         onSortClicked = {},
         onDeleteAllCLicked = {}

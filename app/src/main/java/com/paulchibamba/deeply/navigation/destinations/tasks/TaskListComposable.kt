@@ -5,7 +5,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.paulchibamba.deeply.ui.screens.plan.tasks.TaskListScreen
-import com.paulchibamba.deeply.utils.Constants.TASK_LIST_KEY
+import com.paulchibamba.deeply.utils.Constants.LIST_KEY
 import com.paulchibamba.deeply.utils.Constants.TASK_LIST_SCREEN
 import com.paulchibamba.deeply.viewmodel.SharedViewModel
 
@@ -15,7 +15,7 @@ fun NavGraphBuilder.taskListComposable(
 ){
     composable(
         route = TASK_LIST_SCREEN,
-        arguments = listOf(navArgument(TASK_LIST_KEY){
+        arguments = listOf(navArgument(LIST_KEY){
             type = NavType.StringType
         })
     ){
